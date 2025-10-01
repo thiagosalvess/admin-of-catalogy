@@ -1,4 +1,4 @@
-package com.thiagosalvess.admin.catalogy.domain.video;
+package com.thiagosalvess.admin.catalogy.domain.resource;
 
 import com.thiagosalvess.admin.catalogy.domain.ValueObject;
 

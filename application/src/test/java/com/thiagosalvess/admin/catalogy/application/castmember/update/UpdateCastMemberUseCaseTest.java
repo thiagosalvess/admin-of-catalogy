@@ -1,6 +1,7 @@
 package com.thiagosalvess.admin.catalogy.application.castmember.update;
 
 import com.thiagosalvess.admin.catalogy.application.UseCaseTest;
+import com.thiagosalvess.admin.catalogy.domain.Fixture;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMember;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberGateway;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberID;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static com.thiagosalvess.admin.catalogy.domain.Fixture.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.*;
@@ -38,7 +40,7 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
         final var aMember = CastMember.newMember("vin diesel", CastMemberType.DIRECTOR);
 
         final var expectedId = aMember.getId();
-        final var expectedName = Fixture.name();
+        final var expectedName = name();
         final var expectedType = CastMemberType.ACTOR;
 
         final var aCommand = UpdateCastMemberCommand.with(
@@ -107,7 +109,7 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
         final var aMember = CastMember.newMember("vin diesel", CastMemberType.DIRECTOR);
 
         final var expectedId = aMember.getId();
-        final var expectedName = Fixture.name();
+        final var expectedName = name();
         final CastMemberType expectedType = null;
 
         final var expectedErrorCount = 1;
@@ -140,8 +142,8 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
         final var aMember = CastMember.newMember("vin diesel", CastMemberType.DIRECTOR);
 
         final var expectedId = CastMemberID.from("123");
-        final var expectedName = Fixture.name();
-        final var expectedType = Fixture.CastMembers.type();
+        final var expectedName = name();
+        final var expectedType = CastMembers.type();
 
         final var expectedErrorMessage = "CastMember with ID 123 was not found";
 

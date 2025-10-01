@@ -1,6 +1,7 @@
 package com.thiagosalvess.admin.catalogy.application.castmember.retrieve.get;
 
 import com.thiagosalvess.admin.catalogy.application.UseCaseTest;
+import com.thiagosalvess.admin.catalogy.domain.Fixture;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMember;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberGateway;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberID;
@@ -12,6 +13,8 @@ import org.mockito.Mock;
 import java.util.List;
 import java.util.Optional;
 
+import static com.thiagosalvess.admin.catalogy.domain.Fixture.*;
+import static com.thiagosalvess.admin.catalogy.domain.Fixture.CastMembers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -33,8 +36,8 @@ public class GetCastMemberByIdUseCaseTest extends UseCaseTest {
 
     @Test
     public void givenAValidId_whenCallsGetCastMember_shouldReturnIt() {
-        final var expectedName = Fixture.name();
-        final var expectedType = Fixture.CastMembers.type();
+        final var expectedName = name();
+        final var expectedType = type();
 
         final var aMember = CastMember.newMember(expectedName, expectedType);
 

@@ -16,7 +16,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static com.thiagosalvess.admin.catalogy.domain.Fixture.*;
-import static com.thiagosalvess.admin.catalogy.domain.Fixture.CastMember.*;
+import static com.thiagosalvess.admin.catalogy.domain.Fixture.CastMembers.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

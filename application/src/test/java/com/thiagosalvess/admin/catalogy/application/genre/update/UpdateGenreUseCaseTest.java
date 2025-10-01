@@ -247,10 +247,4 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
 
         verify(genreGateway, times(0)).update(any());
     }
-
-    private List<String> asString(final List<CategoryID> categories) {
-        return categories.stream()
-                .map(CategoryID::getValue)
-                .toList();
-    }
 }

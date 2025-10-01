@@ -324,4 +324,34 @@ public class Video extends AggregateRoot<VideoID> {
                 members
         );
     }
+
+    public Video processing(final VideoMediaType aType) {
+        if (VideoMediaType.VIDEO == aType) {
+            getVideo()
+                    .ifPresent(media -> updateVideoMedia(media.processing()));
+        } else if (VideoMediaType.TRAILER == aType) {
+            getTrailer()
+                    .ifPresent(media -> updateTrailerMedia(media.processing()));
+        }
+
+        return this;
+    }
+
+    public Video completed(final VideoMediaType aType, final String encodedPath) {
+        if (VideoMediaType.VIDEO == aType) {
+            getVideo()
+                    .ifPresent(media -> updateVideoMedia(media.completed(encodedPath)));
+        } else if (VideoMediaType.TRAILER == aType) {
+            getTrailer()
+                    .ifPresent(media -> updateTrailerMedia(media.completed(encodedPath)));
+        }
+
+        return this;
+    }
+
+//    private void onAudioVideoMediaUpdated(final AudioVideoMedia media) {
+//        if (media != null && media.isPendingEncode()) {
+//            this.registerEvent(new VideoMediaCreated(getId().getValue(), media.rawLocation()));
+//        }
+//    }
 }

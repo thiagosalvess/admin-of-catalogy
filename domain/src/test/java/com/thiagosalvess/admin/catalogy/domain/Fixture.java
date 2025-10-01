@@ -5,6 +5,7 @@ import com.thiagosalvess.admin.catalogy.domain.castmember.CastMember;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberType;
 import com.thiagosalvess.admin.catalogy.domain.category.Category;
 import com.thiagosalvess.admin.catalogy.domain.genre.Genre;
+import com.thiagosalvess.admin.catalogy.domain.resource.Resource;
 import com.thiagosalvess.admin.catalogy.domain.utils.IdUtils;
 import com.thiagosalvess.admin.catalogy.domain.video.*;
 

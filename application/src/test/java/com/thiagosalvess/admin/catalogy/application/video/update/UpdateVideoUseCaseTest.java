@@ -11,6 +11,7 @@ import com.thiagosalvess.admin.catalogy.domain.exceptions.InternalErrorException
 import com.thiagosalvess.admin.catalogy.domain.exceptions.NotificationException;
 import com.thiagosalvess.admin.catalogy.domain.genre.GenreGateway;
 import com.thiagosalvess.admin.catalogy.domain.genre.GenreID;
+import com.thiagosalvess.admin.catalogy.domain.resource.Resource;
 import com.thiagosalvess.admin.catalogy.domain.video.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

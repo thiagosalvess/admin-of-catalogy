@@ -3,7 +3,6 @@ package com.thiagosalvess.admin.catalogy.infrastructure.video.persistence;
 
 import com.thiagosalvess.admin.catalogy.domain.video.AudioVideoMedia;
 import com.thiagosalvess.admin.catalogy.domain.video.MediaStatus;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 

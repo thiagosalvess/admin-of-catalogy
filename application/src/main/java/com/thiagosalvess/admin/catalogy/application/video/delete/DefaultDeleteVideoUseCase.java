@@ -19,8 +19,8 @@ public class DefaultDeleteVideoUseCase extends DeleteVideoUseCase {
     }
 
     @Override
-    public void execute(final String anIn) {
-        final var aVideoId = VideoID.from(anIn);
+    public void execute(final String anId) {
+        final var aVideoId = VideoID.from(anId);
         this.videoGateway.deleteById(aVideoId);
         this.mediaResourceGateway.clearResources(aVideoId);
     }

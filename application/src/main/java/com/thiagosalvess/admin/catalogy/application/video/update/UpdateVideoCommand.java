@@ -1,6 +1,6 @@
 package com.thiagosalvess.admin.catalogy.application.video.update;
 
-import com.thiagosalvess.admin.catalogy.domain.video.Resource;
+import com.thiagosalvess.admin.catalogy.domain.resource.Resource;
 
 import java.util.Optional;
 import java.util.Set;

@@ -1,6 +1,7 @@
 package com.thiagosalvess.admin.catalogy.application.castmember.retrieve.list;
 
 import com.thiagosalvess.admin.catalogy.application.UseCaseTest;
+import com.thiagosalvess.admin.catalogy.domain.Fixture;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMember;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberGateway;
 import com.thiagosalvess.admin.catalogy.domain.pagination.Pagination;
@@ -11,6 +12,8 @@ import org.mockito.Mock;
 
 import java.util.List;
 
+import static com.thiagosalvess.admin.catalogy.domain.Fixture.*;
+import static com.thiagosalvess.admin.catalogy.domain.Fixture.CastMembers.type;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -34,8 +37,8 @@ public class ListCastMemberUseCaseTest extends UseCaseTest {
     @Test
     public void givenAValidQuery_whenCallsListCastMembers_shouldReturnAll() {
         final var members = List.of(
-                CastMember.newMember(Fixture.name(), Fixture.CastMembers.type()),
-                CastMember.newMember(Fixture.name(), Fixture.CastMembers.type())
+                CastMember.newMember(name(), type()),
+                CastMember.newMember(name(), type())
         );
 
         final var expectedPage = 0;

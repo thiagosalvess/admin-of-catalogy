@@ -1,5 +1,7 @@
 package com.thiagosalvess.admin.catalogy.domain.video;
 
+import com.thiagosalvess.admin.catalogy.domain.resource.Resource;
+
 import java.util.Optional;
 
 public interface MediaResourceGateway {
