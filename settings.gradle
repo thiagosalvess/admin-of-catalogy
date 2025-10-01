@@ -1,0 +1,4 @@
+rootProject.name = 'admim-of-catalogy'
+include 'domain'
+include 'application'
+include 'infrastructure'
