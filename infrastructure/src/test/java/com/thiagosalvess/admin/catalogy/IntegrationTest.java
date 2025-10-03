@@ -1,6 +1,7 @@
 package com.thiagosalvess.admin.catalogy;
 
 import com.thiagosalvess.admin.catalogy.infrastructure.configuration.WebServerConfig;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,7 @@ import java.lang.annotation.*;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest(classes = WebServerConfig.class)
 @ExtendWith(MySQLCleanUpExtension.class)
+@Tag("integrationTest")
 public @interface IntegrationTest {
 
 }

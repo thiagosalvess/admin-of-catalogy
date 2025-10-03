@@ -1,12 +1,13 @@
 package com.thiagosalvess.admin.catalogy.domain.category;
 
+import com.thiagosalvess.admin.catalogy.domain.UnitTest;
 import com.thiagosalvess.admin.catalogy.domain.exceptions.DomainException;
 import com.thiagosalvess.admin.catalogy.domain.validation.handler.ThrowsValidationHandler;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CategoryTest {
+class CategoryTest extends UnitTest {
     @Test
     public void givenAValidParams_WhenCallNewCategory_thenInstantiateACategory() {
         final var expectedName = "Filmes";

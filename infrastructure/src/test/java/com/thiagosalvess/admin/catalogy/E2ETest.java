@@ -1,6 +1,7 @@
 package com.thiagosalvess.admin.catalogy;
 
 import com.thiagosalvess.admin.catalogy.infrastructure.configuration.WebServerConfig;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,5 +18,6 @@ import java.lang.annotation.*;
 @SpringBootTest(classes = WebServerConfig.class)
 @ExtendWith(MySQLCleanUpExtension.class)
 @AutoConfigureMockMvc
+@Tag("e2eTest")
 public @interface E2ETest {
 }

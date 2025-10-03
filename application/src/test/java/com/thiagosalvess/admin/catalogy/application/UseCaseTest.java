@@ -1,6 +1,7 @@
 package com.thiagosalvess.admin.catalogy.application;
 
 import com.thiagosalvess.admin.catalogy.domain.Identifier;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 
 @ExtendWith(MockitoExtension.class)
+@Tag("unitTest")
 public abstract class UseCaseTest implements BeforeEachCallback {
 
 

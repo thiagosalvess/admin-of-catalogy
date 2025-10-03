@@ -1,5 +1,6 @@
 package com.thiagosalvess.admin.catalogy.domain.video;
 
+import com.thiagosalvess.admin.catalogy.domain.UnitTest;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberID;
 import com.thiagosalvess.admin.catalogy.domain.category.CategoryID;
 import com.thiagosalvess.admin.catalogy.domain.exceptions.DomainException;
@@ -13,7 +14,7 @@ import static java.util.Set.of;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class VideoValidatorTest {
+public class VideoValidatorTest extends UnitTest {
 
     @Test
     public void givenNullTitle_whenCallsValidate_shouldReceiveError() {

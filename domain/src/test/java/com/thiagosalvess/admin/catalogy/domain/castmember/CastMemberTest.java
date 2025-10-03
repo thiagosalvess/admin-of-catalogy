@@ -1,11 +1,12 @@
 package com.thiagosalvess.admin.catalogy.domain.castmember;
 
+import com.thiagosalvess.admin.catalogy.domain.UnitTest;
 import com.thiagosalvess.admin.catalogy.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CastMemberTest {
+public class CastMemberTest extends UnitTest {
 
     @Test
     public void givenAValidParams_whenCallsNewMember_thenInstantiateACastMember() {
