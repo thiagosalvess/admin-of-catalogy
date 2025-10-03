@@ -4,6 +4,7 @@ import com.thiagosalvess.admin.catalogy.infrastructure.configuration.annotations
 import com.thiagosalvess.admin.catalogy.infrastructure.configuration.properties.amqp.QueueProperties;
 import com.thiagosalvess.admin.catalogy.infrastructure.services.EventService;
 import com.thiagosalvess.admin.catalogy.infrastructure.services.impl.RabbitEventService;
+import com.thiagosalvess.admin.catalogy.infrastructure.services.local.InMemoryEventService;
 import org.springframework.amqp.rabbit.core.RabbitOperations;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -13,12 +14,12 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class EventConfig {
 
-//    @Bean
-//    @VideoCreatedQueue
-//    @Profile({"development"})
-//    EventService localVideoCreatedEventService() {
-//        return new InMemoryEventService();
-//    }
+    @Bean
+    @VideoCreatedQueue
+    @Profile({"development"})
+    EventService localVideoCreatedEventService() {
+        return new InMemoryEventService();
+    }
 
     @Bean
     @VideoCreatedQueue

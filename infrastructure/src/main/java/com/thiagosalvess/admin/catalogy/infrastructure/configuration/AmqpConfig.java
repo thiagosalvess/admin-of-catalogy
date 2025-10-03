@@ -1,4 +1,4 @@
-package com.thiagosalvess.admin.catalogy.infrastructure.configuration.properties;
+package com.thiagosalvess.admin.catalogy.infrastructure.configuration;
 
 import com.thiagosalvess.admin.catalogy.infrastructure.configuration.annotations.VideoCreatedQueue;
 import com.thiagosalvess.admin.catalogy.infrastructure.configuration.annotations.VideoEncodedQueue;
@@ -8,6 +8,7 @@ import org.springframework.amqp.core.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class AmqpConfig {
