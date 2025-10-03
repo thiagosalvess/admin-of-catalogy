@@ -13,6 +13,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VideoTest {
+
     @Test
     public void givenValidParams_whenCallsNewVideo_shouldInstantiate() {
         final var expectedTitle = "System Design Interviews";
@@ -64,7 +65,7 @@ public class VideoTest {
         assertTrue(actualVideo.getBanner().isEmpty());
         assertTrue(actualVideo.getThumbnail().isEmpty());
         assertTrue(actualVideo.getThumbnailHalf().isEmpty());
-//        assertTrue(actualVideo.getDomainEvents().isEmpty());
+        assertTrue(actualVideo.getDomainEvents().isEmpty());
 
         assertDoesNotThrow(() -> actualVideo.validate(new ThrowsValidationHandler()));
     }
@@ -83,7 +84,7 @@ public class VideoTest {
         final var expectedOpened = false;
         final var expectedPublished = false;
         final var expectedRating = Rating.L;
-//        final var expectedEvent = new VideoMediaCreated("ID", "file");
+        final var expectedEvent = new VideoMediaCreated("ID", "file");
         final var expectedEventCount = 1;
         final var expectedCategories = Set.of(CategoryID.unique());
         final var expectedGenres = Set.of(GenreID.unique());
@@ -102,7 +103,7 @@ public class VideoTest {
                 Set.of()
         );
 
-//        aVideo.registerEvent(expectedEvent);
+        aVideo.registerEvent(expectedEvent);
 
         final var actualVideo = Video.with(aVideo).update(
                 expectedTitle,
@@ -137,8 +138,8 @@ public class VideoTest {
         assertTrue(actualVideo.getThumbnail().isEmpty());
         assertTrue(actualVideo.getThumbnailHalf().isEmpty());
 
-//        assertEquals(expectedEventCount, actualVideo.getDomainEvents().size());
-//        assertEquals(expectedEvent, actualVideo.getDomainEvents().get(0));
+        assertEquals(expectedEventCount, actualVideo.getDomainEvents().size());
+        assertEquals(expectedEvent, actualVideo.getDomainEvents().get(0));
 
         assertDoesNotThrow(() -> actualVideo.validate(new ThrowsValidationHandler()));
     }
@@ -200,12 +201,12 @@ public class VideoTest {
         assertTrue(actualVideo.getThumbnail().isEmpty());
         assertTrue(actualVideo.getThumbnailHalf().isEmpty());
 
-//        assertEquals(expectedDomainEventSize, actualVideo.getDomainEvents().size());
+        assertEquals(expectedDomainEventSize, actualVideo.getDomainEvents().size());
 
-//        final var actualEvent = (VideoMediaCreated) actualVideo.getDomainEvents().get(0);
-//        assertEquals(aVideo.getId().getValue(), actualEvent.resourceId());
-//        assertEquals(aVideoMedia.rawLocation(), actualEvent.filePath());
-//        assertNotNull(actualEvent.occurredOn());
+        final var actualEvent = (VideoMediaCreated) actualVideo.getDomainEvents().get(0);
+        assertEquals(aVideo.getId().getValue(), actualEvent.resourceId());
+        assertEquals(aVideoMedia.rawLocation(), actualEvent.filePath());
+        assertNotNull(actualEvent.occurredOn());
 
         assertDoesNotThrow(() -> actualVideo.validate(new ThrowsValidationHandler()));
     }
@@ -267,12 +268,12 @@ public class VideoTest {
         assertTrue(actualVideo.getThumbnail().isEmpty());
         assertTrue(actualVideo.getThumbnailHalf().isEmpty());
 
-//        assertEquals(expectedDomainEventSize, actualVideo.getDomainEvents().size());
+        assertEquals(expectedDomainEventSize, actualVideo.getDomainEvents().size());
 
-//        final var actualEvent = (VideoMediaCreated) actualVideo.getDomainEvents().get(0);
-//        assertEquals(aVideo.getId().getValue(), actualEvent.resourceId());
-//        assertEquals(aTrailerMedia.rawLocation(), actualEvent.filePath());
-//        assertNotNull(actualEvent.occurredOn());
+        final var actualEvent = (VideoMediaCreated) actualVideo.getDomainEvents().get(0);
+        assertEquals(aVideo.getId().getValue(), actualEvent.resourceId());
+        assertEquals(aTrailerMedia.rawLocation(), actualEvent.filePath());
+        assertNotNull(actualEvent.occurredOn());
 
         assertDoesNotThrow(() -> actualVideo.validate(new ThrowsValidationHandler()));
     }
@@ -454,45 +455,45 @@ public class VideoTest {
         assertDoesNotThrow(() -> actualVideo.validate(new ThrowsValidationHandler()));
     }
 
-//    @Test
-//    public void givenValidVideo_whenCallsWith_shouldCreateWithoutEvents() {
-//        final var expectedTitle = "System Design Interviews";
-//        final var expectedDescription = """
-//                Disclaimer: o estudo de caso apresentado tem fins educacionais e representa nossas opiniões pessoais.
-//                Esse vídeo faz parte da Imersão Full Stack && Full Cycle.
-//                Para acessar todas as aulas, lives e desafios, acesse:
-//                https://imersao.fullcycle.com.br/
-//                """;
-//        final var expectedLaunchedAt = Year.of(2022);
-//        final var expectedDuration = 120.10;
-//        final var expectedOpened = false;
-//        final var expectedPublished = false;
-//        final var expectedRating = Rating.L;
-//        final var expectedCategories = Set.of(CategoryID.unique());
-//        final var expectedGenres = Set.of(GenreID.unique());
-//        final var expectedMembers = Set.of(CastMemberID.unique());
-//
-//        final var actualVideo = Video.with(
-//                VideoID.unique(),
-//                expectedTitle,
-//                expectedDescription,
-//                expectedLaunchedAt,
-//                expectedDuration,
-//                expectedOpened,
-//                expectedPublished,
-//                expectedRating,
-//                InstantUtils.now(),
-//                InstantUtils.now(),
-//                null,
-//                null,
-//                null,
-//                null,
-//                null,
-//                expectedCategories,
-//                expectedGenres,
-//                expectedMembers
-//        );
-//
-////        assertNotNull(actualVideo.getDomainEvents());
-//    }
+    @Test
+    public void givenValidVideo_whenCallsWith_shouldCreateWithoutEvents() {
+        final var expectedTitle = "System Design Interviews";
+        final var expectedDescription = """
+                Disclaimer: o estudo de caso apresentado tem fins educacionais e representa nossas opiniões pessoais.
+                Esse vídeo faz parte da Imersão Full Stack && Full Cycle.
+                Para acessar todas as aulas, lives e desafios, acesse:
+                https://imersao.fullcycle.com.br/
+                """;
+        final var expectedLaunchedAt = Year.of(2022);
+        final var expectedDuration = 120.10;
+        final var expectedOpened = false;
+        final var expectedPublished = false;
+        final var expectedRating = Rating.L;
+        final var expectedCategories = Set.of(CategoryID.unique());
+        final var expectedGenres = Set.of(GenreID.unique());
+        final var expectedMembers = Set.of(CastMemberID.unique());
+
+        final var actualVideo = Video.with(
+                VideoID.unique(),
+                expectedTitle,
+                expectedDescription,
+                expectedLaunchedAt,
+                expectedDuration,
+                expectedOpened,
+                expectedPublished,
+                expectedRating,
+                InstantUtils.now(),
+                InstantUtils.now(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                expectedCategories,
+                expectedGenres,
+                expectedMembers
+        );
+
+        assertNotNull(actualVideo.getDomainEvents());
+    }
 }

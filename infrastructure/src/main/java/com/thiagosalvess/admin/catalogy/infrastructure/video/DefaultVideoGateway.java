@@ -3,6 +3,8 @@ package com.thiagosalvess.admin.catalogy.infrastructure.video;
 import com.thiagosalvess.admin.catalogy.domain.Identifier;
 import com.thiagosalvess.admin.catalogy.domain.pagination.Pagination;
 import com.thiagosalvess.admin.catalogy.domain.video.*;
+import com.thiagosalvess.admin.catalogy.infrastructure.configuration.annotations.VideoCreatedQueue;
+import com.thiagosalvess.admin.catalogy.infrastructure.services.EventService;
 import com.thiagosalvess.admin.catalogy.infrastructure.utils.SqlUtils;
 import com.thiagosalvess.admin.catalogy.infrastructure.video.persistence.VideoJpaEntity;
 import com.thiagosalvess.admin.catalogy.infrastructure.video.persistence.VideoRepository;
@@ -20,14 +22,14 @@ import static com.thiagosalvess.admin.catalogy.domain.utils.CollectionUtils.null
 @Component
 public class DefaultVideoGateway implements VideoGateway {
 
-//    private final EventService eventService;
+    private final EventService eventService;
     private final VideoRepository videoRepository;
 
     public DefaultVideoGateway(
-//            @VideoCreatedQueue final EventService eventService,
+            @VideoCreatedQueue final EventService eventService,
             final VideoRepository videoRepository
     ) {
-//        this.eventService = Objects.requireNonNull(eventService);
+        this.eventService = Objects.requireNonNull(eventService);
         this.videoRepository = Objects.requireNonNull(videoRepository);
     }
 
@@ -86,7 +88,7 @@ public class DefaultVideoGateway implements VideoGateway {
         final var result = this.videoRepository.save(VideoJpaEntity.from(aVideo))
                 .toAggregate();
 
-//        aVideo.publishDomainEvents(this.eventService::send);
+        aVideo.publishDomainEvents(this.eventService::send);
 
         return result;
     }

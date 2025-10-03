@@ -3,16 +3,14 @@ package com.thiagosalvess.admin.catalogy.domain.video;
 import com.thiagosalvess.admin.catalogy.domain.AggregateRoot;
 import com.thiagosalvess.admin.catalogy.domain.castmember.CastMemberID;
 import com.thiagosalvess.admin.catalogy.domain.category.CategoryID;
+import com.thiagosalvess.admin.catalogy.domain.event.DomainEvent;
 import com.thiagosalvess.admin.catalogy.domain.genre.GenreID;
 import com.thiagosalvess.admin.catalogy.domain.utils.InstantUtils;
 import com.thiagosalvess.admin.catalogy.domain.validation.ValidationHandler;
 
 import java.time.Instant;
 import java.time.Year;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Video extends AggregateRoot<VideoID> {
 
@@ -57,11 +55,10 @@ public class Video extends AggregateRoot<VideoID> {
             final AudioVideoMedia aVideo,
             final Set<CategoryID> categories,
             final Set<GenreID> genres,
-            final Set<CastMemberID> members
-//            final List<DomainEvent> domainEvents
+            final Set<CastMemberID> members,
+            final List<DomainEvent> domainEvents
     ) {
-//        super(anId, domainEvents);
-        super(anId);
+        super(anId, domainEvents);
         this.title = aTitle;
         this.description = aDescription;
         this.launchedAt = aLaunchYear;
@@ -133,14 +130,14 @@ public class Video extends AggregateRoot<VideoID> {
     public Video updateTrailerMedia(final AudioVideoMedia trailer) {
         this.trailer = trailer;
         this.updatedAt = InstantUtils.now();
-//        onAudioVideoMediaUpdated(trailer);
+        onAudioVideoMediaUpdated(trailer);
         return this;
     }
 
     public Video updateVideoMedia(final AudioVideoMedia video) {
         this.video = video;
         this.updatedAt = InstantUtils.now();
-//        onAudioVideoMediaUpdated(video);
+        onAudioVideoMediaUpdated(video);
         return this;
     }
 
@@ -256,7 +253,8 @@ public class Video extends AggregateRoot<VideoID> {
                 null,
                 categories,
                 genres,
-                members
+                members,
+                null
         );
     }
 
@@ -279,7 +277,8 @@ public class Video extends AggregateRoot<VideoID> {
                 aVideo.getVideo().orElse(null),
                 new HashSet<>(aVideo.getCategories()),
                 new HashSet<>(aVideo.getGenres()),
-                new HashSet<>(aVideo.getCastMembers())
+                new HashSet<>(aVideo.getCastMembers()),
+                aVideo.getDomainEvents()
         );
     }
 
@@ -321,7 +320,8 @@ public class Video extends AggregateRoot<VideoID> {
                 aVideo,
                 categories,
                 genres,
-                members
+                members,
+                null
         );
     }
 
@@ -349,9 +349,9 @@ public class Video extends AggregateRoot<VideoID> {
         return this;
     }
 
-//    private void onAudioVideoMediaUpdated(final AudioVideoMedia media) {
-//        if (media != null && media.isPendingEncode()) {
-//            this.registerEvent(new VideoMediaCreated(getId().getValue(), media.rawLocation()));
-//        }
-//    }
+    private void onAudioVideoMediaUpdated(final AudioVideoMedia media) {
+        if (media != null && media.isPendingEncode()) {
+            this.registerEvent(new VideoMediaCreated(getId().getValue(), media.rawLocation()));
+        }
+    }
 }
