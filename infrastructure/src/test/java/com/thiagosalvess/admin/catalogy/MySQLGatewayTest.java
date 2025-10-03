@@ -17,8 +17,9 @@ import java.lang.annotation.*;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ComponentScan(
         basePackages = "com.thiagosalvess.admin.catalogy",
+        useDefaultFilters = false,
         includeFilters = {
-                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".[MySQLGateway]")
+                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*MySQLGateway")
         }
 )
 @DataJpaTest

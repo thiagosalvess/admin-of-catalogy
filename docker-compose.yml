@@ -14,7 +14,6 @@ services:
     networks:
       - adm_video_network
 
-
   mysql:
     container_name: adm_video_mysql
     image: mysql:latest
@@ -39,6 +38,19 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
+    networks:
+      - adm_video_network
+
+  keycloak:
+    container_name: adm_videos_keycloak
+    image: quay.io/keycloack/keycloak:20.0.3
+    environment:
+      - KEYCLOACK_ADMIN=admin
+      - KEYCLOACK_ADMIN_PASSWORD=admin
+    ports:
+      - 8443:8080
+    command:
+      - start-dev
     networks:
       - adm_video_network
 
